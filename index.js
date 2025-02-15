@@ -51,6 +51,23 @@ const resolvers = {
             games.push(newGame);
             return games
             
+        },
+        updateGame: (_,args) => {
+            console.log('args', args);
+            games = games.map((game) => {
+                if(game.id === args.id){
+                    return {
+                        ...game,
+                        ...args.game
+                    }
+                }
+
+                return game;
+            });
+
+            console.log('games', games);
+
+            return games.find(game => game.id === args.id);
         }
     }
 }; 

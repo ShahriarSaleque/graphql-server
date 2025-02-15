@@ -37,9 +37,15 @@ export const typeDefs = gql`
   type Mutation {
     deleteGame(id: ID!): [Game],
     addGame(game: InputGame!): [Game]
+    updateGame(id: ID!, game: EditInputGame!): [Game]
   }
   input InputGame {
     title: String!,
     platform: [String!]!,
+  }
+  input EditInputGame  {
+    # make both fields optional
+    title: String,
+    platform: [String!],
   }
 `;
