@@ -4,17 +4,24 @@ export const typeDefs = gql`
   type Game {
     id: ID!,
     title: String!,
-    platform: [String!]!
+    platform: [String!]!,
+    reviews: [Review!]
   },
   type Review {
     id: ID!,
     rating: Int!,
-    content: String!
+    content: String!,
+    game_id: ID!,
+    author_id: ID!,
+    Game: Game!,
+    Author: Author!,
+
   },
   type Author {
     id: ID!,
     name: String!,
     verified: Boolean!,
+    reviews: [Review!],
   },
   type Query {
     # each is an entry point to expose a particular type of data to the client
