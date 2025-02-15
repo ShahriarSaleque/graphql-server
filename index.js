@@ -38,6 +38,20 @@ const resolvers = {
         Author: (parent) => {
             return authors.find((author) => author.id === parent.author_id)
         }
+    },
+    Mutation: {
+        deleteGame: (_,args) => {
+            return games.filter(game => game.id !== args.id);
+        },
+        addGame: (_,args) => {
+            const newGame = {
+                ...args.game,
+                id: Math.floor(Math.random() * 1000).toString()
+            }
+            games.push(newGame);
+            return games
+            
+        }
     }
 }; 
 
