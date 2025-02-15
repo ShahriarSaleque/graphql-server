@@ -3,14 +3,23 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./schema.js";
 
 // grab the mock data 
-import { games, author, review } from "./_db.js";
+import { games, authors, reviews } from "./_db.js";
 
 // resolvers
 const resolvers = {
     Query: {
         games: () => games,
-        author: () => author,
-        reviews: () => review,
+        game: (_,args) => {
+            return games.find(game => game.id === args.id);
+        },
+        authors: () => authors,
+        author: (_,args,) => {
+            return authors.find(author => author.id === args.id);
+        },
+        reviews: () => reviews,
+        review: (_,args) => {
+            return reviews.find(review => review.id === args.id);
+        }
     }
 }; 
 

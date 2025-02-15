@@ -4,7 +4,7 @@ export const typeDefs = gql`
   type Game {
     id: ID!,
     title: String!,
-    plaform: [String!]!
+    platform: [String!]!
   },
   type Review {
     id: ID!,
@@ -21,7 +21,10 @@ export const typeDefs = gql`
     # reviews end point theke we can access ony the review resource 
     # connected resource to review thakle we can get those as well
     reviews: [Review],
+    review(id: ID!) : Review
     games: [Game],
-    author: [Author]
+    game(id: ID!) : Game,
+    authors: [Author]
+    author(id: ID!) : Author
   }
 `;
